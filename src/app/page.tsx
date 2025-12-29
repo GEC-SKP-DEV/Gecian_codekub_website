@@ -1,7 +1,19 @@
+"use client"; // needed for React hooks in Next.js app router
+import { useState } from "react";
+
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+  const installCommand =
+    "curl -sSL https://codekub-website.codecompass2024.workers.dev/install | bash";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(installCommand);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // reset after 2 seconds
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#0e0f1a] to-[#0b0c14] text-slate-200 flex flex-col items-center px-6">
-      
       {/* Header */}
       <section className="mt-24 text-center max-w-3xl">
         <h1 className="text-5xl font-bold tracking-tight text-green-400">
@@ -17,10 +29,14 @@ export default function Home() {
         </p>
 
         {/* Install Command */}
-        <div className="mt-8 bg-[#151728] border border-slate-700 rounded-lg px-5 py-3 font-mono text-sm text-slate-300 inline-flex items-center gap-3">
-          <span>
-            curl -sSL https://raw.githubusercontent.com/CodeCompasss/codekub/main/boot.sh | bash
-          </span>
+        <div className="mt-8 flex items-center gap-2 bg-[#151728] border border-slate-700 rounded-lg px-5 py-3 font-mono text-sm text-slate-300">
+          <span className="flex-1 break-all">{installCommand}</span>
+          <button
+            onClick={handleCopy}
+            className="ml-2 px-3 py-1 rounded bg-green-500/30 hover:bg-green-500/50 text-green-300 transition text-sm"
+          >
+            {copied ? "Copied ✅" : "Copy"}
+          </button>
         </div>
 
         {/* Manual Button */}
@@ -60,10 +76,9 @@ export default function Home() {
       <footer className="mt-24 mb-10 text-center text-slate-500 text-sm">
         <p>Brought to you by</p>
         <a href="https://code-compass-website.vercel.app/">
-        <p className="mt-1 font-semibold text-slate-300">CodeCompass</p>
+          <p className="mt-1 font-semibold text-slate-300">CodeCompass</p>
         </a>
       </footer>
-
     </main>
   );
 }
