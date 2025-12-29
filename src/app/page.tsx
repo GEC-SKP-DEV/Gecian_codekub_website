@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Home() {
   const [copied, setCopied] = useState(false);
   const installCommand =
-    "curl -sSL https://codekub-website.codecompass2024.workers.dev/install | bash";
+    "curl -sSL https://raw.githubusercontent.com/CodeCompasss/codekub/main/boot.sh | bash";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(installCommand);
