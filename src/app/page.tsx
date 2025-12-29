@@ -71,6 +71,19 @@ export default function Home() {
           systems, web, and software development—so students can focus on learning, not setup.
         </p>
       </section>
+      {/* Installation Help */}
+      <p className="mt-3 text-sm text-slate-500">
+        Need help installing?{" "}
+        <a
+          href="https://www.youtube.com/watch?v=AU_xhhFQX-0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-green-400 hover:text-green-300 underline underline-offset-2"
+        >
+          Watch the installation walkthrough on YouTube
+        </a>
+      </p>
+
 
       {/* Footer */}
       <footer className="mt-24 mb-10 text-center text-slate-500 text-sm">
