@@ -1,25 +1,17 @@
 #!/usr/bin/env bash
-# ===============================
-# Codekub Installer (Bootstrap)
-# ===============================
+set -euo pipefail
 
-# URL to fetch the full installer from GitHub
-INSTALL_URL="https://raw.githubusercontent.com/CodeCompasss/codekub/main/boot.sh"
+# URL to the real installer
+BOOT_URL="https://raw.githubusercontent.com/CodeCompasss/codekub/main/boot.sh"
 
 echo "============================="
 echo "     Installing Codekub      "
 echo "============================="
+echo "This script will run boot.sh from GitHub..."
 
-# Use curl or wget
-if command -v curl >/dev/null 2>&1; then
-    echo "Downloading installer via curl..."
-    curl -fsSL "$INSTALL_URL" | bash
-elif command -v wget >/dev/null 2>&1; then
-    echo "Downloading installer via wget..."
-    wget -qO- "$INSTALL_URL" | bash
+# Run with sudo if necessary
+if command -v sudo >/dev/null 2>&1; then
+    curl -fsSL "$BOOT_URL" | sudo bash
 else
-    echo "Error: Neither curl nor wget is installed."
-    exit 1
+    curl -fsSL "$BOOT_URL" | bash
 fi
-
-echo "Installation finished!"
