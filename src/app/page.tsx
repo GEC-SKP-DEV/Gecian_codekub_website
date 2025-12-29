@@ -1,4 +1,5 @@
-"use client"; // needed for React hooks in Next.js app router
+"use client";
+
 import { useState } from "react";
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
   const handleCopy = () => {
     navigator.clipboard.writeText(installCommand);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // reset after 2 seconds
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -19,7 +20,6 @@ export default function Home() {
         <h1 className="text-5xl font-bold tracking-tight text-green-400">
           CODEKUB
         </h1>
-
         <p className="mt-4 text-lg text-slate-400">
           A CSE-focused developer setup for Ubuntu 24.04+
           <br />
